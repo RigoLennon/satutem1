@@ -14,6 +14,15 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::resource('declaration', 'DeclarationController');
+
+
+
+
+
+
+//////////////////
+
 Auth::routes();
 
 //Vistas
