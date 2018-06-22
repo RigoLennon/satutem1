@@ -43,7 +43,7 @@
 
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{{ url('/declaraciones') }}">Declaraciones</a>
+                                    <a href="{{ url('/create/declaracion') }}">Declaraciones</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
@@ -55,7 +55,6 @@
                 </div>
             </div>
         </nav>
-
         @yield('content')
     </div>
 

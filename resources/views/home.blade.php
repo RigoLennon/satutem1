@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <p>Los datos se guardaron satisfactoriamente</p>
                 </div>
             </div>
         </div>

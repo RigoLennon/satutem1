@@ -14,45 +14,14 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('declaration', 'DeclarationController');
-
-
-
-
-
-
-//////////////////
 
 Auth::routes();
 
-//Vistas
-Route::view('/decla' , 'declarations');
 
-//controladores
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home','HomeController@index')->name('home');
 
+Route::get('/create/declaracion','DeclarationsController@create');
 
+Route::post('/create/declaracion','DeclarationsController@store');
 
-
-/**
- * Mostrar declaraciones
- */
-Route::get('/declaraciones',function(){
-    return view('createDeclaration');
-});
-
-/*
- * Agregar declaraciones
- */
-
-Route::post('/declaracion', function (Request $request){
-
-});
-
-/*
- * Eliminar una declaracion
- */
-
-Route::delete('/declaracion/{id}', function ($id){
-
-});
+Route::get('/declaracion','DeclarationsController@index');

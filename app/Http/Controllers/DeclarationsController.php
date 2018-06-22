@@ -14,8 +14,8 @@ class DeclarationsController extends Controller
      */
     public function index()
     {
-        $declaration = Declaration::orderBy('id', 'DESC')->paginate(3);
-        return view ('Declaration.index', compact('declarations'));
+        $declarations = Declaration::where('user_id', auth()->user()->id)->get();
+        return view('index', compact('declaraciones'));
     }
 
     /**
@@ -25,7 +25,7 @@ class DeclarationsController extends Controller
      */
     public function create()
     {
-        return view('Declaration.create');
+        return view('createDeclaration');
     }
 
     /**
@@ -36,9 +36,19 @@ class DeclarationsController extends Controller
      */
     public function store(Request $request)
     {
-        $this -> validate($request,['periodicity' => 'required', 'period' => 'required', 'date' => 'required', 'operation' => 'required', 'declaration_type' => 'required', 'capture' => 'required']);
-        Declaration::create($request->all());
-        return redirect()->route('declaration.index')->with('success', 'Registro creado satisfactoriamente');
+        $declaration = new Declaration();
+        $data = $this -> validate($request,[
+            'period' => 'required',
+            'date' => 'required',
+            'operation' => 'required',
+            'declaration' => 'required',
+            'declaration_type' => 'required',
+            'excercise' => 'required',
+            'capture' => 'required'
+        ]);
+
+        $declaration->saveDeclaration($data);
+        return redirect('/home')->with('success', 'Registro creado satisfactoriamente');
     }
 
     /**
@@ -49,8 +59,7 @@ class DeclarationsController extends Controller
      */
     public function show($id)
     {
-        $declaration = Declaration::find($id);
-        return view('declaration.show', compact('declarations'));
+        //
     }
 
     /**
