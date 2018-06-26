@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Declaration;
 
 class DeclarationsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +21,9 @@ class DeclarationsController extends Controller
      */
     public function index()
     {
-        $declarations = Declaration::where('user_id', auth()->user()->id)->get();
-        return view('index', compact('declaraciones'));
+        $declarations = Declaration::all();
+        $users = User::all();
+        return view('index')->with('declarations', $declarations , 'users', $users);
     }
 
     /**

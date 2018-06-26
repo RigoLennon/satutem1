@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'SATUTeM') }}</title>
+    <title>SATUTeM</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'SATUTeM') }}
                     </a>
                 </div>
 
@@ -56,6 +56,39 @@
             </div>
         </nav>
         @yield('content')
+
+
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                TODAS LAS DECLARACIONES
+                <tr>
+                    <td>ID del alumno</td>
+                    <td>Ejercicio</td>
+                    <td>Periodo</td>
+                    <td>Fecha de presentacion</td>
+                    <td>No. de Operacion</td>
+                    <td>Declaracion</td>
+                    <td>Tipo de Declaracion</td>
+                    <td>Linea de captura</td>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($declarations as $row)
+                    <tr>
+                        <td>{{ $row->user_id }}</td>
+                        <td>{{ $row->excercise }}</td>
+                        <td>{{ $row-> period}}</td>
+                        <td>{{ $row-> date }}</td>
+                        <td>{{ $row-> operation}}</td>
+                        <td>{{ $row-> declaration }}</td>
+                        <td>{{ $row-> declaration_type }}</td>
+                        <td>{{ $row-> capture }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 
 <!-- Scripts -->
