@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'SATUTeM') }}</title>
+    <title>{{ config('app.name', 'SDI') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -29,8 +29,16 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'SATUTeM') }}
+                        SDI
                     </a>
+                    @guest
+                    @else
+                        @if (Auth::user()->usertype == 1)
+                        <a class="navbar-brand" href="{{ url('/home') }}">
+                            Admin
+                        </a>
+                        @endif
+                    @endguest
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -43,12 +51,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">Iniciar Sesion</a></li>
+                            <li><a href="{{ route('register') }}">Registrarse</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    Nombre: <strong>{{ Auth::user()->name }}</strong> / RFC: <strong>{{ Auth::user()->username }}</strong><span class="caret"></span>
+                                    Nombre: <strong>{{ Auth::user()->name }} {{ Auth::user()->surname1 }} {{ Auth::user()->surname2 }}</strong> / RFC: <strong>{{ Auth::user()->username }}</strong><span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">

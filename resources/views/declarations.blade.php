@@ -1,4 +1,4 @@
-@if(Auth::user())
+@if(Auth::attempt(['email' => $email, 'password' => $password, 'status' => 1]))
 
     @extends('layouts.app')
     @section('content')

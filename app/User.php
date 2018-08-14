@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace SATUTeM;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'password',
+        'name', 'username', 'surname1', 'surname2',  'password', 'status',
     ];
 
     /**

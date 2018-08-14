@@ -25,6 +25,34 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('surname1') ? ' has-error' : '' }}">
+                            <label for="surname1" class="col-md-4 control-label">Apellido Paterno:</label>
+
+                            <div class="col-md-6">
+                                <input id="surname1" type="text" class="form-control" name="surname1" value="{{ old('surname1') }}" required autofocus>
+
+                                @if ($errors->has('surname1'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('surname1') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('surname2') ? ' has-error' : '' }}">
+                            <label for="surname2" class="col-md-4 control-label">Apellido Materno:</label>
+
+                            <div class="col-md-6">
+                                <input id="surname2" type="text" class="form-control" name="surname2" value="{{ old('surname2') }}" required autofocus>
+
+                                @if ($errors->has('surname2'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('surname2') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                             <label for="rfc" class="col-md-4 control-label">RFC:</label>
 

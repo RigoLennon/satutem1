@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace SATUTeM\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use SATUTeM\User;
+use SATUTeM\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/bienvenido';
 
     /**
      * Create a new controller instance.
@@ -48,8 +48,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:13|unique:users',
+            'name' => 'required|string|max:255|unique:users',
+            'username' => 'required|string|max:13|min:13|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -58,7 +58,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \SATUTeM\User
      */
     protected function create(array $data)
     {

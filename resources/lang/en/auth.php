@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
+    'failed' => 'El RFC o la Contraseña son incorrectos',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'username' => 'No jalo el username',
 
 ];

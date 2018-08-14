@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace SATUTeM\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

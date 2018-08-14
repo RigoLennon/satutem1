@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace SATUTeM\Http\Controllers;
 
-use App\User;
+use SATUTeM\User;
 use Illuminate\Http\Request;
-use App\Declaration;
+use SATUTeM\Declaration;
 
 class DeclarationsController extends Controller
 {
@@ -47,16 +47,16 @@ class DeclarationsController extends Controller
         $declaration = new Declaration();
         $data = $this -> validate($request,[
             'period' => 'required',
-            'date' => 'required',
-            'operation' => 'required',
-            'declaration' => 'required',
             'declaration_type' => 'required',
             'excercise' => 'required',
-            'capture' => 'required'
+            /*'date' => 'required',
+            'operation' => 'required',
+            'declaration' => 'required',
+            'capture' => 'required'*/
         ]);
 
         $declaration->saveDeclaration($data);
-        return redirect('/home')->with('success', 'Registro creado satisfactoriamente');
+        return redirect('/')->with('success', 'Registro creado satisfactoriamente');
     }
 
     /**
@@ -107,5 +107,13 @@ class DeclarationsController extends Controller
     {
         Declaration::find($id)->delete();
         return redirect()->route('declaration.index')->with('success','Registro eliminado correctamente');
+    }
+
+    public function pdf(){
+        $declarations = Declaration::all();
+
+        $pdf = \PDF::loadView('pdf.declarations', compact('declarations'));
+
+        return $pdf->download('listado.pdf');
     }
 }

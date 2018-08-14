@@ -5,9 +5,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Acceso por contraseña</div>
+                <div class="panel-heading">Acceder al simulador</div>
 
                 <div class="panel-body">
+
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -15,13 +16,7 @@
                             <label for="username" class="col-md-4 control-label">RFC:</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
-
-                                @if ($errors->has('username'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus><br>
                             </div>
                         </div>
 
@@ -30,20 +25,25 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
                             </div>
+                        </div>
+
+
+                        <div class="col-md-12 text-center">
+                            @if ($errors->has('username'))
+                                <div class="alert alert-danger" role="alert">
+                                    <strong>{{ $errors->first('username') }}</strong>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Ingresar
+                                <button type="submit" class="btn btn-success">
+                                    Iniciar sesión
                                 </button>
+
+                                <button class="btn btn-default"><a href="{{ route('register') }}">Registrarse</a></button>
 
                             </div>
                         </div>
