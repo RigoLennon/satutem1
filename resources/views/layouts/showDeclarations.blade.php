@@ -2,7 +2,9 @@
 
 @section('content')
     @php
-        $declaration = DB::table('declarations')->get();
+        $declaration = DB::table('declarations')
+        ->join('users','declarations.user_id','=', 'users.id')
+        ->get();
     @endphp
 
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -70,16 +72,14 @@
                                 <tr>
                                     <td><h4>Nombre</h4></td>
                                     <td><h4>RFC</h4></td>
-                                    <td><h4>Estado</h4></td>
+                                    <td><h4>No. de operacion</h4></td>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($declaration as $x)
                                         <tr>
-                                            <td>{{ $x->id }}</td>
-                                            <td>{{ $x->period }}</td>
-                                            <td>{{ $x->excercise }}</td>
-                                            <td>{{ $x->declaration_type}}</td>
+                                            <td>{{ $x->name }} {{ $x->surname1 }} {{ $x->surname1 }}</td>
+                                            <td>{{ $x->username }}</td>
                                         </tr>
                                 @endforeach
                                 </tbody>

@@ -50,6 +50,14 @@
                     </form>
                 </div>
             </div>
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Antes de comenzar</h4>
+                <hr>
+                <p>*Asegurate de estar <strong><u>registrado en el sistema</u></strong>, si no lo estas, presiona el boton de <a href="{{ route('register') }}">"Registarse"</a></p>
+                <p>*Comprueba que tu <strong><u>RFC y Contraseña</u></strong> sean correctos</p>
+                <p>*Asegurate de que tu cuenta este <strong><u>activa</u></strong>, si no, ponte en contacto con el administrador</p>
+            </div>
+
         </div>
     </div>
 </div>

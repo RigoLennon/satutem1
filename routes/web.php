@@ -40,4 +40,6 @@ Route::post('show/declaracion','showDeclaration@store');
 
 Route::get('update/user/{id}/{status}','UserController@update');
 
+Route::get('delete/{id}', 'UserController@delete');
+
 Route::get('descargar-pdf', 'DeclarationsController@pdf')->name('declarations.pdf');

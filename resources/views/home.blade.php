@@ -57,6 +57,9 @@
 
         <!-->
             <div class="container">
+                <script>
+                    sweetAlert("Hello world!");
+                </script>
                 <div class="col-md-8 col-md-offset-3" style="padding: 1.2em;">
                     <div class="panel panel-default">
                         <div class="panel-heading"><h3>Lista de alumnos Activos/Inactivos</h3></div>
@@ -65,35 +68,37 @@
 
                             @if (Auth::user()->usertype == 1)
 
-                                <table id="users" class="table table-borderless">
+                                <table id="users" class="display" style="width:100%">
                                     <thead>
                                     <tr>
                                         <td><h4>Nombre</h4></td>
                                         <td><h4>RFC</h4></td>
                                         <td><h4>Estado</h4></td>
+                                        <td><h4>Acciones</h4></td>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($users as $x)
                                         @if($x->usertype !=1)
                                             <tr>
-                                                <td>{{ $x->name }}</td>
+                                                <td>{{ $x->name }} {{ $x->surname1 }} {{ $x->surname2 }} </td>
                                                 <td>{{ $x->username }}</td>
                                                 <td>
                                                     @if($x->status == 1)
-                                                        <a href="{{ url('update/user',[$x->id, $status = 0]) }}" name="id" type="button" class="btn btn-danger">Desactivo</a>
+                                                        <a href="{{ url('update/user',[$x->id, $status = 0]) }}" name="id" type="button" class="btn btn-danger">Desactivar <span class="glyphicon glyphicon-remove"></span></a>
                                                     @else
-                                                        <a href="{{ url('update/user',[$x->id, $status = 1]) }}" name="id" type="button" class="btn btn-success">Activar</a>
+                                                        <a href="{{ url('update/user',[$x->id, $status = 1]) }}" name="id" type="button" class="btn btn-success">Activar <span class="glyphicon glyphicon-ok"></span></a>
                                                     @endif
                                                 </td>
+                                                <td><a href="/delete/{{ $x->id }}" type="button" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-trash"></span></a></td>
                                             </tr>
                                         @endif
                                     @endforeach
                                     </tbody>
                                 </table>
-                                <a href="{{ route('declarations.pdf') }}" class="btn btn-sm btn-primary">
+                                <!--<a href="{{ route('declarations.pdf') }}" class="btn btn-sm btn-primary">
                                     Descargar productos en PDF
-                                </a>
+                                </a>-->
                             @endif
                         </div>
                     </div>

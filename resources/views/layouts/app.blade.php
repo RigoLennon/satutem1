@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 </head>
 <body>
     <div id="app">
@@ -84,5 +86,14 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css">
+    <script>
+        $(document).ready(function() {
+            $('#users').DataTable();
+        } );
+    </script>
 </body>
 </html>
